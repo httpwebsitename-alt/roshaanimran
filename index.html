@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical & Embedded Systems Engineer | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#00f2fe',
+                            blue: '#4facfe',
+                            emerald: '#10b981',
+                            dark: '#0a0f1d',
+                            cardDark: '#111827',
+                            borderDark: '#1f2937'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Circuit & Tech Animations */
+        body {
+            background-color: #070b14;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .glow-cyan {
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.25);
+        }
+
+        .glow-emerald {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-emerald {
+            background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 242, 254, 0.4);
+        }
+
+        /* Pulse animation for FYP badge */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.8); }
+        }
+
+        .fyp-badge-glow {
+            animation: pulse-glow 3s infinite;
+        }
+
+        /* Circuit line effect */
+        .circuit-line {
+            position: relative;
+        }
+        .circuit-line::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f2fe, transparent);
+            opacity: 0.3;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070b14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f2fe;
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-black">
+
+    <!-- Background Overlay -->
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 glass-card border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-black font-bold font-mono text-xl shadow-lg group-hover:scale-105 transition-transform">
+                    EE
+                </div>
+                <div>
+                    <span class="text-lg font-bold tracking-wider text-white block leading-none">ELECTRICAL<span class="text-brand-cyan">.ENG</span></span>
+                    <span class="text-xs font-mono text-gray-400">COMSATS Islamabad</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 font-mono text-sm">
+                <a href="#about" class="text-gray-300 hover:text-brand-cyan transition-colors">// About</a>
+                <a href="#fyp" class="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    20M FYP
+                </a>
+                <a href="#skills" class="text-gray-300 hover:text-brand-cyan transition-colors">// Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-brand-cyan transition-colors">// Projects</a>
+                <a href="#experience" class="text-gray-300 hover:text-brand-cyan transition-colors">// Timeline</a>
+                <a href="#contact" class="px-4 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-brand-cyan hover:bg-cyan-500 hover:text-black transition-all font-semibold">
+                    Get In Touch
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-gray-800 px-6 py-4 space-y-4 font-mono text-sm">
+            <a href="#about" class="block text-gray-300 hover:text-brand-cyan">// About</a>
+            <a href="#fyp" class="block text-emerald-400 font-semibold">// 20M FYP Project</a>
+            <a href="#skills" class="block text-gray-300 hover:text-brand-cyan">// Skills</a>
+            <a href="#projects" class="block text-gray-300 hover:text-brand-cyan">// Projects</a>
+            <a href="#experience" class="block text-gray-300 hover:text-brand-cyan">// Timeline</a>
+            <a href="#contact" class="block text-brand-cyan font-bold">// Contact</a>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28 py-12">
+
+        <!-- Hero Section -->
+        <section class="min-h-[80vh] flex flex-col justify-center items-center md:items-start grid md:grid-cols-12 gap-8 items-center pt-8">
+            <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-brand-cyan text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    7th Semester Electrical Engineering @ COMSATS
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Hardware & <br>
+                    <span class="text-gradient">Embedded Systems</span> Specialist
+                </h1>
+
+                <!-- Interactive Terminal Effect -->
+                <div class="glass-card p-4 rounded-xl border border-gray-800 font-mono text-sm text-left shadow-2xl max-w-xl">
+                    <div class="flex items-center space-x-2 mb-3 border-b border-gray-800 pb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-xs text-gray-500 ml-2">engineer_status.py</span>
+                    </div>
+                    <div class="text-gray-300">
+                        <span class="text-brand-cyan">const</span> <span class="text-yellow-400">engineer</span> = {<br>
+                        &nbsp;&nbsp;focus: <span class="text-emerald-400">"Active Cell Balancing & BMS"</span>,<br>
+                        &nbsp;&nbsp;microcontrollers: [<span class="text-cyan-300">"STM32"</span>, <span class="text-cyan-300">"ESP32"</span>, <span class="text-cyan-300">"Arduino"</span>],<br>
+                        &nbsp;&nbsp;core_tools: [<span class="text-cyan-300">"MATLAB"</span>, <span class="text-cyan-300">"C/C++"</span>, <span class="text-cyan-300">"Python"</span>],<br>
+                        &nbsp;&nbsp;creative_stack: [<span class="text-cyan-300">"Graphic Design"</span>, <span class="text-cyan-300">"Web Dev"</span>]<br>
+                        };
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+                    <a href="#projects" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold hover:shadow-lg hover:shadow-cyan-500/25 transition-all">
+                        View Projects <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#fyp" class="px-6 py-3 rounded-xl glass-card border border-emerald-500/50 text-emerald-400 font-semibold hover:bg-emerald-500/10 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-bolt text-emerald-400"></i>
+                        20M FYP Details
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Interactive Schematic Illustration -->
+            <div class="md:col-span-5 flex justify-center w-full">
+                <div class="relative w-full max-w-md aspect-square rounded-2xl glass-card p-6 flex flex-col justify-between border border-cyan-500/20 glow-cyan">
+                    <div class="flex justify-between items-center font-mono text-xs text-gray-400 border-b border-gray-800 pb-3">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-microchip text-brand-cyan"></i> MCU CONTROLLER</span>
+                        <span class="text-emerald-400">ONLINE</span>
+                    </div>
+
+                    <!-- Simulated Circuit Diagram Visual -->
+                    <div class="my-auto space-y-6">
+                        <div class="flex items-center justify-between bg-gray-900/80 p-3 rounded-lg border border-gray-800">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-battery-three-quarters text-emerald-400 text-xl"></i>
+                                <div>
+                                    <p class="text-xs font-mono text-gray-400">Cell Pack Status</p>
+                                    <p class="text-sm font-bold text-white">Active Balancing Active</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono bg-emerald-950 text-emerald-400 px-2 py-1 rounded border border-emerald-800">3.85V Balanced</span>
+                        </div>
+
+                        <!-- Circuit Line Diagram graphic -->
+                        <div class="relative py-4">
+                            <div class="w-full h-1 bg-gray-800 rounded relative">
+                                <div class="absolute left-0 top-0 h-full bg-gradient-to-r from-cyan-500 to-emerald-400 w-3/4 rounded animate-pulse"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] font-mono text-gray-500 mt-2">
+                                <span>PWM SIGNAL</span>
+                                <span>INDUCTIVE TRANSFER</span>
+                                <span>BMS FEEDBACK</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 text-center font-mono text-xs">
+                            <div class="p-2 rounded bg-gray-900/50 border border-gray-800">
+                                <span class="text-gray-500 block text-[10px]">EFFICIENCY</span>
+                                <span class="text-brand-cyan font-bold">94.2%</span>
+                            </div>
+                            <div class="p-2 rounded bg-gray-900/50 border border-gray-800">
+                                <span class="text-gray-500 block text-[10px]">CURRENT</span>
+                                <span class="text-emerald-400 font-bold">2.5A Peak</span>
+                            </div>
+                            <div class="p-2 rounded bg-gray-900/50 border border-gray-800">
+                                <span class="text-gray-500 block text-[10px]">MCU FREQ</span>
+                                <span class="text-yellow-400 font-bold">72 MHz</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center text-xs font-mono text-gray-500 pt-3 border-t border-gray-800">
+                        <span>STM32F4 / ESP32 Stack</span>
+                        <span>COMSATS EE Lab</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FYP Highlight Banner (20 Million Funded Project) -->
+        <section id="fyp" class="relative">
+            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-30 blur-xl"></div>
+            <div class="relative glass-card rounded-2xl p-6 sm:p-10 border border-emerald-500/40 glow-emerald">
+                <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                    <div class="space-y-4 max-w-3xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 font-mono text-xs border border-emerald-700/50 fyp-badge-glow">
+                            <i class="fa-solid fa-award text-yellow-400"></i>
+                            20 Million PKR Funded Final Year Project
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-bold text-white">
+                            Active Cell Balancing System for Next-Gen Battery Management (BMS)
+                        </h2>
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                            Focusing on high-efficiency, energy-redistributive active cell balancing techniques to prolong battery life, optimize capacity utilization, and minimize heat dissipation in EV & Large-Scale Energy Storage Applications.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 rounded-md bg-gray-800 text-cyan-300 font-mono text-xs border border-gray-700">Hardware Prototyping</span>
+                            <span class="px-3 py-1 rounded-md bg-gray-800 text-cyan-300 font-mono text-xs border border-gray-700">MATLAB / Simulink</span>
+                            <span class="px-3 py-1 rounded-md bg-gray-800 text-cyan-300 font-mono text-xs border border-gray-700">Power Electronics</span>
+                            <span class="px-3 py-1 rounded-md bg-gray-800 text-cyan-300 font-mono text-xs border border-gray-700">STM32 Microcontrollers</span>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full lg:w-auto flex flex-col sm:flex-row lg:flex-col gap-4 min-w-[220px]">
+                        <div class="bg-gray-900/90 p-4 rounded-xl border border-emerald-500/30 text-center">
+                            <span class="text-xs font-mono text-gray-400 uppercase tracking-wider block">Grant Funding</span>
+                            <span class="text-2xl font-extrabold text-emerald-400 font-mono">20,000,000 PKR</span>
+                        </div>
+                        <div class="bg-gray-900/90 p-4 rounded-xl border border-gray-800 text-center">
+                            <span class="text-xs font-mono text-gray-400 uppercase tracking-wider block">Institution</span>
+                            <span class="text-sm font-bold text-white">COMSATS Islamabad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="space-y-8">
+            <div class="flex items-center space-x-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white font-mono"><span class="text-brand-cyan">01.</span> About Me</h2>
+                <div class="h-[1px] bg-gray-800 flex-grow"></div>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7 space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                        Hello! I'm an Electrical Engineering student currently in my <span class="text-white font-semibold">7th Semester at COMSATS University Islamabad</span>. I operate at the intersection of low-level hardware design, embedded firmware development, and modern software design.
+                    </p>
+                    <p>
+                        My core engineering focus is on <span class="text-brand-cyan">Battery Management Systems (BMS)</span>, power electronics, and embedded microcontrollers (<span class="text-white">STM32, ESP32, Arduino</span>). I thrive on turning complex hardware challenges into real-world, functional prototypes.
+                    </p>
+                    <p>
+                        Beyond core electrical engineering, I possess strong software versatility—proficient in <span class="text-white">C/C++, Python, Java, MATLAB</span>—and creative skillsets in <span class="text-brand-cyan">Graphic Design & Web Development</span>, allowing me to build complete end-to-end hardware-to-software solutions.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4 font-mono text-sm">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-chevron-right text-brand-cyan text-xs"></i>
+                            <span>University: COMSATS, ISB</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-chevron-right text-brand-cyan text-xs"></i>
+                            <span>Semester: 7th (Senior)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-chevron-right text-brand-cyan text-xs"></i>
+                            <span>Focus: Embedded & BMS</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-chevron-right text-brand-cyan text-xs"></i>
+                            <span>Location: Islamabad, PK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-5 grid grid-cols-2 gap-4">
+                    <div class="glass-card p-5 rounded-2xl border border-gray-800 text-center space-y-2">
+                        <i class="fa-solid fa-microchip text-3xl text-brand-cyan"></i>
+                        <h3 class="font-bold text-white">Microcontrollers</h3>
+                        <p class="text-xs text-gray-400 font-mono">STM32, ESP32, Arduino, AVR Architecture</p>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl border border-gray-800 text-center space-y-2">
+                        <i class="fa-solid fa-car-battery text-3xl text-emerald-400"></i>
+                        <h3 class="font-bold text-white">Active Balancing</h3>
+                        <p class="text-xs text-gray-400 font-mono">BMS Optimization & Circuit Design</p>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl border border-gray-800 text-center space-y-2">
+                        <i class="fa-solid fa-code text-3xl text-yellow-400"></i>
+                        <h3 class="font-bold text-white">Programming</h3>
+                        <p class="text-xs text-gray-400 font-mono">C, C++, MATLAB, Python, Java</p>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl border border-gray-800 text-center space-y-2">
+                        <i class="fa-solid fa-palette text-3xl text-purple-400"></i>
+                        <h3 class="font-bold text-white">Design & Web</h3>
+                        <p class="text-xs text-gray-400 font-mono">UI/UX, Graphic Design, Web Apps</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Matrix Section -->
+        <section id="skills" class="space-y-8">
+            <div class="flex items-center space-x-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white font-mono"><span class="text-brand-cyan">02.</span> Technical Skills</h2>
+                <div class="h-[1px] bg-gray-800 flex-grow"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Programming Languages -->
+                <div class="glass-card p-6 rounded-2xl border border-gray-800 space-y-4">
+                    <div class="flex items-center space-x-3 text-brand-cyan">
+                        <i class="fa-solid fa-terminal text-xl"></i>
+                        <h3 class="font-bold text-lg text-white">Programming Languages</h3>
+                    </div>
+                    <div class="space-y-3 font-mono text-sm">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">C / Embedded C</span>
+                                <span class="text-brand-cyan">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-cyan-400 h-1.5 rounded-full w-[90%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">C++</span>
+                                <span class="text-brand-cyan">Proficient</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-cyan-400 h-1.5 rounded-full w-[85%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">MATLAB & Simulink</span>
+                                <span class="text-brand-cyan">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-cyan-400 h-1.5 rounded-full w-[88%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">Python</span>
+                                <span class="text-brand-cyan">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-cyan-400 h-1.5 rounded-full w-[75%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">Java</span>
+                                <span class="text-brand-cyan">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-cyan-400 h-1.5 rounded-full w-[70%]"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Embedded & Microcontrollers -->
+                <div class="glass-card p-6 rounded-2xl border border-gray-800 space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-400">
+                        <i class="fa-solid fa-cpu text-xl"></i>
+                        <h3 class="font-bold text-lg text-white">Hardware & MCUs</h3>
+                    </div>
+                    <div class="space-y-3 font-mono text-sm">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">STM32 (ARM Cortex)</span>
+                                <span class="text-emerald-400">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-emerald-400 h-1.5 rounded-full w-[88%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">ESP32 (WiFi/BLE)</span>
+                                <span class="text-emerald-400">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-emerald-400 h-1.5 rounded-full w-[90%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">Arduino Platform</span>
+                                <span class="text-emerald-400">Expert</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-emerald-400 h-1.5 rounded-full w-[95%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">Circuit Simulation & Design</span>
+                                <span class="text-emerald-400">Proficient</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-emerald-400 h-1.5 rounded-full w-[82%]"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative & Software Tech Stack -->
+                <div class="glass-card p-6 rounded-2xl border border-gray-800 space-y-4">
+                    <div class="flex items-center space-x-3 text-purple-400">
+                        <i class="fa-solid fa-layer-group text-xl"></i>
+                        <h3 class="font-bold text-lg text-white">Creative & Web Tech</h3>
+                    </div>
+                    <div class="space-y-3 font-mono text-sm">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">Graphic Design (Photoshop/Illustrator)</span>
+                                <span class="text-purple-400">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-purple-400 h-1.5 rounded-full w-[88%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">Web Development (HTML/CSS/JS/Tailwind)</span>
+                                <span class="text-purple-400">Proficient</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-purple-400 h-1.5 rounded-full w-[82%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">Git & GitHub Workflow</span>
+                                <span class="text-purple-400">Proficient</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-purple-400 h-1.5 rounded-full w-[85%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-300">UI/UX Layout & Prototyping</span>
+                                <span class="text-purple-400">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full"><div class="bg-purple-400 h-1.5 rounded-full w-[78%]"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projects" class="space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white font-mono"><span class="text-brand-cyan">03.</span> Featured Projects</h2>
+                    <div class="h-[1px] bg-gray-800 w-24"></div>
+                </div>
+
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap gap-2 font-mono text-xs" id="project-filters">
+                    <button data-filter="all" class="px-4 py-2 rounded-lg bg-cyan-500 text-black font-bold transition-all filter-btn">All Projects</button>
+                    <button data-filter="embedded" class="px-4 py-2 rounded-lg bg-gray-800 text-gray-300 hover:text-white transition-all filter-btn">Embedded & BMS</button>
+                    <button data-filter="software" class="px-4 py-2 rounded-lg bg-gray-800 text-gray-300 hover:text-white transition-all filter-btn">MATLAB & Software</button>
+                    <button data-filter="creative" class="px-4 py-2 rounded-lg bg-gray-800 text-gray-300 hover:text-white transition-all filter-btn">Graphic & Web</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+                
+                <!-- Project 1: FYP Active Cell Balancing -->
+                <div class="project-card glass-card rounded-2xl p-6 border border-gray-800 flex flex-col justify-between" data-category="embedded">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <i class="fa-solid fa-car-battery text-3xl text-emerald-400"></i>
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-400 text-[10px] font-mono border border-emerald-800">20M Funded FYP</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white hover:text-brand-cyan transition-colors">Active Cell Balancing Hardware Prototype</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Inductive & Capacitive active balancing energy transfer algorithm for lithium-ion battery packs controlled via microcontrollers.
+                        </p>
+                    </div>
+                    <div class="pt-6 space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-gray-400">
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">STM32</span>
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">MATLAB</span>
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">PCB Design</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-gray-400 text-sm font-mono pt-2 border-t border-gray-800/80">
+                            <a href="#" class="hover:text-brand-cyan flex items-center gap-1"><i class="fa-brands fa-github"></i> Code</a>
+                            <a href="#" class="hover:text-brand-cyan flex items-center gap-1"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: ESP32 IoT Monitoring System -->
+                <div class="project-card glass-card rounded-2xl p-6 border border-gray-800 flex flex-col justify-between" data-category="embedded">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <i class="fa-solid fa-wifi text-3xl text-brand-cyan"></i>
+                            <span class="px-2.5 py-1 rounded-full bg-cyan-950 text-brand-cyan text-[10px] font-mono border border-cyan-800">IoT Hardware</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white hover:text-brand-cyan transition-colors">ESP32 Smart Energy Telemetry Node</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Real-time wireless voltage, current, and temperature telemetry system streaming battery diagnostics over MQTT protocols.
+                        </p>
+                    </div>
+                    <div class="pt-6 space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-gray-400">
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">ESP32</span>
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">C++</span>
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">MQTT</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-gray-400 text-sm font-mono pt-2 border-t border-gray-800/80">
+                            <a href="#" class="hover:text-brand-cyan flex items-center gap-1"><i class="fa-brands fa-github"></i> Repository</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: MATLAB Simulink Power Electronics -->
+                <div class="project-card glass-card rounded-2xl p-6 border border-gray-800 flex flex-col justify-between" data-category="software">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <i class="fa-solid fa-diagram-project text-3xl text-yellow-400"></i>
+                            <span class="px-2.5 py-1 rounded-full bg-yellow-950 text-yellow-400 text-[10px] font-mono border border-yellow-800">Simulink</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white hover:text-brand-cyan transition-colors">DC-DC Buck-Boost Simulation Model</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Closed-loop PID controller modeling for bi-directional energy converter designed in MATLAB/Simulink environment.
+                        </p>
+                    </div>
+                    <div class="pt-6 space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-gray-400">
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">MATLAB</span>
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">Control Theory</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-gray-400 text-sm font-mono pt-2 border-t border-gray-800/80">
+                            <a href="#" class="hover:text-brand-cyan flex items-center gap-1"><i class="fa-brands fa-github"></i> Model Files</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Arduino STM32 Custom Library -->
+                <div class="project-card glass-card rounded-2xl p-6 border border-gray-800 flex flex-col justify-between" data-category="software">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <i class="fa-solid fa-code text-3xl text-blue-400"></i>
+                            <span class="px-2.5 py-1 rounded-full bg-blue-950 text-blue-400 text-[10px] font-mono border border-blue-800">Embedded Firmware</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white hover:text-brand-cyan transition-colors">Custom SPI & I2C Sensor Driver Library</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Low-overhead custom drivers written in C/C++ for hardware interfacing with multi-channel ADCs and current sensors.
+                        </p>
+                    </div>
+                    <div class="pt-6 space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-gray-400">
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">C</span>
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">C++</span>
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">Arduino / STM</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-gray-400 text-sm font-mono pt-2 border-t border-gray-800/80">
+                            <a href="#" class="hover:text-brand-cyan flex items-center gap-1"><i class="fa-brands fa-github"></i> Driver Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Creative Web & Graphic Portfolio -->
+                <div class="project-card glass-card rounded-2xl p-6 border border-gray-800 flex flex-col justify-between" data-category="creative">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <i class="fa-solid fa-paintbrush text-3xl text-purple-400"></i>
+                            <span class="px-2.5 py-1 rounded-full bg-purple-950 text-purple-400 text-[10px] font-mono border border-purple-800">Design & UI</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white hover:text-brand-cyan transition-colors">Engineering Brand Identity & Web UI</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Complete visual graphics, tech branding, vector schematic graphics, and responsive web user interfaces.
+                        </p>
+                    </div>
+                    <div class="pt-6 space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-gray-400">
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">Illustrator</span>
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">Tailwind</span>
+                            <span class="bg-gray-900 px-2 py-0.5 rounded border border-gray-800">Web Dev</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-gray-400 text-sm font-mono pt-2 border-t border-gray-800/80">
+                            <a href="#" class="hover:text-brand-cyan flex items-center gap-1"><i class="fa-solid fa-images"></i> Graphic Gallery</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Education & Timeline Section -->
+        <section id="experience" class="space-y-8">
+            <div class="flex items-center space-x-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white font-mono"><span class="text-brand-cyan">04.</span> Academic Timeline</h2>
+                <div class="h-[1px] bg-gray-800 flex-grow"></div>
+            </div>
+
+            <div class="relative border-l-2 border-gray-800 ml-4 space-y-8 pl-6 sm:pl-8">
+                
+                <!-- Timeline Item 1 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-gray-950"></div>
+                    <div class="glass-card p-6 rounded-2xl border border-gray-800 space-y-2">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center text-xs font-mono text-gray-400">
+                            <span class="text-brand-cyan font-bold">2021 — PRESENT (EXPECTED GRADUATION 2025)</span>
+                            <span>Islamabad, Pakistan</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Bachelor of Science in Electrical Engineering</h3>
+                        <p class="text-sm text-gray-300 font-mono">COMSATS University Islamabad (Currently in 7th Semester)</p>
+                        <p class="text-xs text-gray-400 pt-2 leading-relaxed">
+                            Relevant Coursework: Microcontroller Interfacing, Power Electronics, Circuit Analysis, Digital Logic Design, Embedded Systems, Signal Processing, Control Systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-emerald-400 border-4 border-gray-950"></div>
+                    <div class="glass-card p-6 rounded-2xl border border-gray-800 space-y-2">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center text-xs font-mono text-gray-400">
+                            <span class="text-emerald-400 font-bold">CURRENT SENIOR YEAR PROJECT</span>
+                            <span>Funded Research</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Lead Student Researcher — Active Cell Balancing FYP</h3>
+                        <p class="text-sm text-gray-300 font-mono">20 Million PKR Funded BMS Research</p>
+                        <p class="text-xs text-gray-400 pt-2 leading-relaxed">
+                            Architecting hardware and firmware solutions for battery cell equalization using microcontroller-driven switching circuits and real-time monitoring.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interactive Contact Section -->
+        <section id="contact" class="space-y-8 pb-12">
+            <div class="flex items-center space-x-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white font-mono"><span class="text-brand-cyan">05.</span> Get In Touch</h2>
+                <div class="h-[1px] bg-gray-800 flex-grow"></div>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5 space-y-6">
+                    <h3 class="text-2xl font-bold text-white">Let's Connect & Collaborate</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Whether you want to discuss Active Cell Balancing, BMS designs, microcontrollers, or need graphic design and web development work—feel free to drop a message!
+                    </p>
+
+                    <div class="space-y-4 font-mono text-sm">
+                        <div class="flex items-center space-x-3 text-gray-300">
+                            <div class="w-10 h-10 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-brand-cyan">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">EMAIL</p>
+                                <p class="text-white">roshaanqureshi7172@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3 text-gray-300">
+                            <div class="w-10 h-10 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-brand-cyan">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">LOCATION</p>
+                                <p class="text-white">COMSATS University, Islamabad, PK</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3 text-gray-300">
+                            <div class="w-10 h-10 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-brand-cyan">
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">GITHUB</p>
+                                <p class="text-white">github.com/yourusername</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="md:col-span-7 glass-card p-6 sm:p-8 rounded-2xl border border-gray-800">
+                    <form id="contact-form" class="space-y-4" onsubmit="handleFormSubmit(event)">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-1">YOUR NAME</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-gray-800 text-white focus:outline-none focus:border-cyan-500 text-sm font-sans" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-1">YOUR EMAIL</label>
+                                <input type="email" required class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-gray-800 text-white focus:outline-none focus:border-cyan-500 text-sm font-sans" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1">SUBJECT</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-gray-800 text-white focus:outline-none focus:border-cyan-500 text-sm font-sans" placeholder="Embedded Project Inquiry / Collaboration">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1">MESSAGE</label>
+                            <textarea rows="4" required class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-gray-800 text-white focus:outline-none focus:border-cyan-500 text-sm font-sans" placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold font-mono hover:opacity-90 transition-opacity">
+                            Transmit Message <i class="fa-solid fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                    <div id="form-message" class="hidden mt-4 p-3 rounded-lg bg-emerald-950/80 border border-emerald-500 text-emerald-400 text-sm font-mono text-center">
+                        Message transmission acknowledged! I will get back to you soon.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/80 py-8 glass-card">
+        <div class="max-w-7xl mx-auto px-4 text-center font-mono text-xs text-gray-500 space-y-2">
+            <p>Designed & Built by Electrical Engineer @ COMSATS University Islamabad</p>
+            <p>© 2026 | Hosted on GitHub Pages</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on clicking links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Projects Filter Functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button styles
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-cyan-500', 'text-black', 'font-bold');
+                    b.classList.add('bg-gray-800', 'text-gray-300');
+                });
+                btn.classList.remove('bg-gray-800', 'text-gray-300');
+                btn.classList.add('bg-cyan-500', 'text-black', 'font-bold');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Contact Form Submission Handler (No page reload)
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const formMsg = document.getElementById('form-message');
+            formMsg.classList.remove('hidden');
+            document.getElementById('contact-form').reset();
+            setTimeout(() => {
+                formMsg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>
